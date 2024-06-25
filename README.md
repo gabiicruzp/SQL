@@ -19,6 +19,10 @@ SQL-Learning-Repository/
 │   ├── 5a. JOINs.sql
 │   ├── 5b. JOINs - Exercicios.sql
 │   ├── 6. Exercicios fixacao.sql
+│   ├── 7a. Variáveis.sql
+│   ├── 7b. Variáveis - Exercicios.sql
+│   ├── 8a. Manipulação de Strings e Datas.sql
+│   ├── 8b. Manipulação de Strings e Datas - Exercicios.sql
 │   └── ...
 ├── MySQL/
 │   ├── script1.sql
