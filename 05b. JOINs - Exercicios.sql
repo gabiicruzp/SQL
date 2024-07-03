@@ -11,7 +11,7 @@ INNER JOIN DimProductSubcategory
 	ON DimProduct.ProductSubcategoryKey = DimProductSubcategory.ProductSubcategoryKey
 
 
---2. Identifique uma coluna em comum entre as tabelas DimProductSubcategory e DimProductCategory. Utilize essa coluna para complementar informações na tabela DimProductSubcategory a partir da DimProductCategory. Utilize o LEFT JOIN. 
+--2. Identifique uma coluna em comum entre as tabelas DimProductSubcategory e DimProductCategory. Utilize essa coluna para complementar informaÃ§Ãµes na tabela DimProductSubcategory a partir da DimProductCategory. Utilize o LEFT JOIN. 
 SELECT TOP(3) * FROM DimProductSubcategory
 SELECT TOP(3) * FROM DimProductCategory
 
@@ -24,7 +24,7 @@ LEFT JOIN DimProductCategory
 	ON DimProductSubcategory.ProductCategoryKey = DimProductCategory.ProductCategoryKey
 
 
--- 3. Para cada loja da tabela DimStore, descubra qual o Continente e o Nome do País associados (de acordo com DimGeography). Seu SELECT final deve conter apenas as seguintes colunas: StoreKey, StoreName, EmployeeCount, ContinentName e RegionCountryName. Utilize o LEFT JOIN neste exercício
+-- 3. Para cada loja da tabela DimStore, descubra qual o Continente e o Nome do PaÃ­s associados (de acordo com DimGeography). Seu SELECT final deve conter apenas as seguintes colunas: StoreKey, StoreName, EmployeeCount, ContinentName e RegionCountryName. Utilize o LEFT JOIN neste exercÃ­cio
 SELECT TOP(3) * FROM DimStore
 SELECT TOP(3) * FROM DimGeography
 
@@ -53,7 +53,7 @@ FROM DimStore
 LEFT JOIN DimGeography
 	ON DimStore.GeographyKey = DimGeography.GeographyKey
 
--- 4. Complementa a tabela DimProduct com a informação de ProductCategoryDescription. Utilize o LEFT JOIN e retorne em seu SELECT apenas as 5 colunas que considerar mais relevantes. 
+-- 4. Complementa a tabela DimProduct com a informaÃ§Ã£o de ProductCategoryDescription. Utilize o LEFT JOIN e retorne em seu SELECT apenas as 5 colunas que considerar mais relevantes. 
 SELECT TOP(3) * FROM DimProduct
 SELECT TOP(3) * FROM DimProductCategory
 SELECT TOP(3) * FROM DimProductSubcategory
@@ -70,15 +70,15 @@ ON
 WHERE
     c1.TABLE_NAME = 'DimProduct' AND c2.TABLE_NAME = 'DimProductSubcategory'
     AND c1.TABLE_SCHEMA = 'dbo' AND c2.TABLE_SCHEMA = 'dbo';
- -- Coluna útil em comum entre DimProductCategory e DimProductSubcategory: ProductCategoryKey
- -- Coluna útil em comum entre DimProduct e DimProductSubcategory: ProductSubcategoryKey
+ -- Coluna Ãºtil em comum entre DimProductCategory e DimProductSubcategory: ProductCategoryKey
+ -- Coluna Ãºtil em comum entre DimProduct e DimProductSubcategory: ProductSubcategoryKey
 */
 
 SELECT
 	DimProduct.ProductName AS 'Produto',
 	DimProduct.BrandName AS 'Marca',
 	DimProduct.ColorName AS 'Cor',
-	DimProductCategory.ProductCategoryDescription AS 'Descrição',
+	DimProductCategory.ProductCategoryDescription AS 'DescriÃ§Ã£o',
 	DimProductSubcategory.ProductSubcategoryKey AS 'ID Subcategoria'
 FROM
 	DimProduct
@@ -88,10 +88,10 @@ LEFT JOIN DimProductSubcategory
 			ON DimProductSubcategory.ProductCategoryKey = DimProductCategory.ProductCategoryKey
 
 
--- 5. A tabela FactStrategyPlan resume o planejamento estratégico da empresa. Cada linha representa um montante destinado a uma determinada AccountKey. 
---a. Faça um SELECT das 100 primeiras linhas de FactStrategyPlan para reconhecer a tabela. 
+-- 5. A tabela FactStrategyPlan resume o planejamento estratÃ©gico da empresa. Cada linha representa um montante destinado a uma determinada AccountKey. 
+--a. FaÃ§a um SELECT das 100 primeiras linhas de FactStrategyPlan para reconhecer a tabela. 
 SELECT TOP(100) * FROM FactStrategyPlan
---b. Faça um INNER JOIN para criar uma tabela contendo o AccountName para cada AccountKey da tabela FactStrategyPlan. O seu SELECT final deve conter as colunas: • StrategyPlanKey • DateKey • AccountName • Amount
+--b. FaÃ§a um INNER JOIN para criar uma tabela contendo o AccountName para cada AccountKey da tabela FactStrategyPlan. O seu SELECT final deve conter as colunas: â€¢ StrategyPlanKey â€¢ DateKey â€¢ AccountName â€¢ Amount
 SELECT TOP(5) * FROM DimAccount
 
 SELECT 
@@ -104,7 +104,7 @@ FROM
 INNER JOIN DimAccount
 	ON FactStrategyPlan.AccountKey = DimAccount.AccountKey
 
--- 6. Vamos continuar analisando a tabela FactStrategyPlan. Além da coluna AccountKey que identifica o tipo de conta, há também uma outra coluna chamada ScenarioKey. Essa coluna possui a numeração que identifica o tipo de cenário: Real, Orçado e Previsão. Faça um INNER JOIN para criar uma tabela contendo o ScenarioName para cada ScenarioKey da tabela FactStrategyPlan. O seu SELECT final deve conter as colunas: • StrategyPlanKey • DateKey • ScenarioName • Amount 
+-- 6. Vamos continuar analisando a tabela FactStrategyPlan. AlÃ©m da coluna AccountKey que identifica o tipo de conta, hÃ¡ tambÃ©m uma outra coluna chamada ScenarioKey. Essa coluna possui a numeraÃ§Ã£o que identifica o tipo de cenÃ¡rio: Real, OrÃ§ado e PrevisÃ£o. FaÃ§a um INNER JOIN para criar uma tabela contendo o ScenarioName para cada ScenarioKey da tabela FactStrategyPlan. O seu SELECT final deve conter as colunas: â€¢ StrategyPlanKey â€¢ DateKey â€¢ ScenarioName â€¢ Amount 
 SELECT TOP(3) * FROM FactStrategyPlan
 SELECT TOP(3) * FROM DimScenario
 
@@ -119,7 +119,7 @@ INNER JOIN DimScenario
 	ON FactStrategyPlan.ScenarioKey = DimScenario.ScenarioKey
 
 
--- 7. Algumas subcategorias não possuem nenhum exemplar de produto. Identifique que subcategorias são essas
+-- 7. Algumas subcategorias nÃ£o possuem nenhum exemplar de produto. Identifique que subcategorias sÃ£o essas
 SELECT TOP(100) * FROM DimProductSubcategory
 SELECT TOP(100) * FROM DimProduct
 
@@ -131,7 +131,7 @@ RIGHT JOIN DimProductSubcategory
 	ON DimProduct.ProductSubcategoryKey = DimProductSubcategory.ProductSubcategoryKey
 WHERE ProductName IS NULL
 
--- 8. Há uma tabela que mostra a combinação entre Marca e Canal de Venda, para as marcas Contoso, Fabrikam e Litware. Crie um código SQL para chegar no mesmo resultado.
+-- 8. HÃ¡ uma tabela que mostra a combinaÃ§Ã£o entre Marca e Canal de Venda, para as marcas Contoso, Fabrikam e Litware. Crie um cÃ³digo SQL para chegar no mesmo resultado.
 SELECT TOP(3) * FROM DimProduct
 SELECT TOP(3) * FROM DimChannel
 
@@ -144,7 +144,7 @@ CROSS JOIN DimChannel
 WHERE BrandName IN ('Contoso', 'Fabrikam', 'Litware')
 
 
--- 9. Neste exercício, você deverá relacionar as tabelas FactOnlineSales com DimPromotion. Identifique a coluna que as duas tabelas têm em comum e utilize-a para criar esse relacionamento. Retorne uma tabela contendo as seguintes colunas: • OnlineSalesKey • DateKey • PromotionName • SalesAmount A sua consulta deve considerar apenas as linhas de vendas referentes a produtos com desconto (PromotionName <> ‘No Discount’). Além disso, você deverá ordenar essa tabela de acordo com a coluna DateKey, em ordem crescente.
+-- 9. Neste exercÃ­cio, vocÃª deverÃ¡ relacionar as tabelas FactOnlineSales com DimPromotion. Identifique a coluna que as duas tabelas tÃªm em comum e utilize-a para criar esse relacionamento. Retorne uma tabela contendo as seguintes colunas: â€¢ OnlineSalesKey â€¢ DateKey â€¢ PromotionName â€¢ SalesAmount A sua consulta deve considerar apenas as linhas de vendas referentes a produtos com desconto (PromotionName <> â€˜No Discountâ€™). AlÃ©m disso, vocÃª deverÃ¡ ordenar essa tabela de acordo com a coluna DateKey, em ordem crescente.
 SELECT TOP(3) * FROM FactOnlineSales
 SELECT TOP(3) * FROM DimPromotion
 
@@ -161,7 +161,7 @@ ON
 WHERE
     c1.TABLE_NAME = 'FactOnlineSales' AND c2.TABLE_NAME = 'DimPromotion'
     AND c1.TABLE_SCHEMA = 'dbo' AND c2.TABLE_SCHEMA = 'dbo';
- -- Coluna útil em comum entre FactOnlineSales e DimPromotion: PromotionKey
+ -- Coluna Ãºtil em comum entre FactOnlineSales e DimPromotion: PromotionKey
  */ 
 
 SELECT TOP(1000)
@@ -176,7 +176,7 @@ WHERE PromotionName <> 'No Discount'
 ORDER BY DateKey ASC
 
 
--- 10. Há uma tabela no qual o resultado de um Join entre a tabela FactSales e as tabelas: DimChannel, DimStore e DimProduct. Recrie esta consulta e classifique em ordem crescente de acordo com SalesAmount
+-- 10. HÃ¡ uma tabela no qual o resultado de um Join entre a tabela FactSales e as tabelas: DimChannel, DimStore e DimProduct. Recrie esta consulta e classifique em ordem crescente de acordo com SalesAmount
 SELECT TOP(3) * FROM FactSales
 SELECT TOP(3) * FROM DimChannel
 SELECT TOP(3) * FROM DimStore
