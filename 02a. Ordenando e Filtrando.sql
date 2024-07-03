@@ -23,7 +23,7 @@ FROM
 ORDER BY UnitCost DESC, Weight DESC
 
 
--- Filtrar por valor (Quantos produtos tem um preÁo unitario maior que $1000?)
+-- Filtrar por valor (Quantos produtos tem um pre√ßo unitario maior que $1000?)
 SELECT
 	ProductName,
 	UnitPrice
@@ -58,12 +58,12 @@ WHERE BirthDate >= '1970-12-31'
 ORDER BY BirthDate DESC
 
 
--- Filtrar com IN: significa que o que tiver entre () vai ter a funÁ„o de OR, ent„o ou isso ou aquilo ou aquilo
+-- Filtrar com IN: significa que o que tiver entre () vai ter a fun√ß√£o de OR, ent√£o ou isso ou aquilo ou aquilo
 SELECT * FROM DimProduct
 WHERE ColorName IN ('Silver', 'Blue', 'White', 'Red', 'Black')
 
 
--- Like: verifica dentro da cÈlula se tem o que procuramos, ent„o se tiver mais de uma palavra e vc quer filtrar apenas uma delas (ex: pessoas q tenham em algum lugar sobrenome Cruz). 
+-- Like: verifica dentro da c√©lula se tem o que procuramos, ent√£o se tiver mais de uma palavra e vc quer filtrar apenas uma delas (ex: pessoas q tenham em algum lugar sobrenome Cruz). 
 -- Obs: tem que colocar % pra falar que pode estar escrito antes ou depois de algo
 SELECT * FROM DimProduct
 WHERE ProductName LIKE '%MP3 Player%'
@@ -72,7 +72,7 @@ SELECT * FROM DimProduct
 WHERE ProductDescription LIKE '%Type%' -- Retorna quem tem Type em algum lugar
 
 SELECT * FROM DimProduct
-WHERE ProductDescription LIKE 'Type%' -- Retorna sÛ quem tem Type no COME«O
+WHERE ProductDescription LIKE 'Type%' -- Retorna s√≥ quem tem Type no COME√áO
 
 
 -- Between
