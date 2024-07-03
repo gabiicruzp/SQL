@@ -1,4 +1,4 @@
--- Função SUM
+-- FunÃ§Ã£o SUM
 SELECT TOP(100) * FROM FactSales
 
 SELECT
@@ -7,7 +7,7 @@ SELECT
 FROM
 	FactSales
 
--- Função COUNT
+-- FunÃ§Ã£o COUNT
 SELECT
 	COUNT(*) AS 'Total de produtos'
 FROM
@@ -19,28 +19,28 @@ FROM
 	DimProduct
 
 SELECT
-	COUNT(Size) AS 'Tamanho' -- Não conta valores NULL, só linhas com valores preenchidos
+	COUNT(Size) AS 'Tamanho' -- NÃ£o conta valores NULL, sÃ³ linhas com valores preenchidos
 FROM
 	DimProduct
 
 
--- Função COUNT e DISTINCT
+-- FunÃ§Ã£o COUNT e DISTINCT
 SELECT
 	COUNT(DISTINCT ColorName) AS 'Qnt de Cores'
 FROM 
 	DimProduct
 
 
--- Funções MAX e MIN
+-- FunÃ§Ãµes MAX e MIN
 SELECT
 	MAX(UnitPrice) AS 'Custo Max',
 	MIN(UnitPrice) AS 'Custo Min'
 FROM
 	DimProduct
 
--- Função AVARAGE
+-- FunÃ§Ã£o AVARAGE
 SELECT
-	AVG(YearlyIncome) AS 'Média Anual Salário'
+	AVG(YearlyIncome) AS 'MÃ©dia Anual SalÃ¡rio'
 FROM
 	DimCustomer
 
