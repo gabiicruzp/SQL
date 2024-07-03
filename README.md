@@ -23,6 +23,12 @@ SQL-Learning-Repository/
 │   ├── 7b. Variáveis - Exercicios.sql
 │   ├── 8a. Manipulação de Strings e Datas.sql
 │   ├── 8b. Manipulação de Strings e Datas - Exercicios.sql
+│   ├── 9a. Funcoes Condicionais.sql
+│   ├── 9b. Funcoes Condicionais - Exercicios.sql
+│   ├── 10a. Views.sql
+│   ├── 10b. Views - Exercicios.sql
+│   ├── 11a. CRUD.sql
+│   ├── 11b. CRUD - Exercicios.sql
 │   └── ...
 ├── MySQL/
 │   ├── script1.sql
