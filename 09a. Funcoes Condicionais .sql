@@ -1,4 +1,4 @@
--- FunÁıes Condicionais
+-- Fun√ß√µes Condicionais
 /*
 SELECT
 	CASE
@@ -20,7 +20,7 @@ SELECT
 	CASE
 		WHEN @nota >=6 THEN 'Aprovado'
 		ELSE 'Reprovado'
-	END AS 'SituaÁ„o do Aluno'
+	END AS 'Situa√ß√£o do Aluno'
 
 
 DECLARE 
@@ -33,7 +33,7 @@ SELECT
 	END AS 'Produto'
 
 
---1. FaÁa SELECT das colunas CustomerKey, FirstName e Gender na tabela DimCustomer e use o case para criar uma nova coluna com a info de "Masculino" ou "Feminino"
+--1. Fa√ßa SELECT das colunas CustomerKey, FirstName e Gender na tabela DimCustomer e use o case para criar uma nova coluna com a info de "Masculino" ou "Feminino"
 
 SELECT
 	CustomerKey AS 'ID', 
@@ -47,7 +47,7 @@ SELECT
 FROM DimCustomer
 
 
---2. Crie um cÛdigo para verificar a nota do aluno e deterimanr a situaÁ„o:
+--2. Crie um c√≥digo para verificar a nota do aluno e deterimanr a situa√ß√£o:
 --aprovado: nota maior ou igual a 6
 --prova final: nota entre 4 a 6
 --reprovado:nota abaixo de 4
@@ -58,23 +58,23 @@ SELECT
 		WHEN @nota >= 6 THEN 'Aprovado'
 		WHEN @nota >=4 THEN 'Prova Final'
 		ELSE 'Reprovado'
-	END AS 'SituaÁ„o do Aluno'
+	END AS 'Situa√ß√£o do Aluno'
 
---3. Classifique o produto de acordo com o seu preÁo
+--3. Classifique o produto de acordo com o seu pre√ßo
 --Preco >= 40000: Luxo
 --Preco >= 10000 e Preco <40000: Economico
---Preco <1000: B·sico
+--Preco <1000: B√°sico
 DECLARE @preco FLOAT = 50000
 SELECT 
 	CASE
 		WHEN @preco >=40000 THEN 'Luxo'
 		WHEN @preco >=10000 THEN 'Economico'
-		ELSE 'B·sico'
+		ELSE 'B√°sico'
 	END AS 'Classe produto'
 
 
 -- CASE AND e CASE OR
---4. FaÁa uma consulta ‡ tabela DimProduct e retorne as colunas ProductName, BrandName, ColorName, UnitPrice e uma coluna de preÁo com desconto. Caso o produto seja da marca contoso e da cor vermelha, o desconto ser· de 10%. Caso contr·rio n„o ter· nenhum desconto
+--4. Fa√ßa uma consulta √† tabela DimProduct e retorne as colunas ProductName, BrandName, ColorName, UnitPrice e uma coluna de pre√ßo com desconto. Caso o produto seja da marca contoso e da cor vermelha, o desconto ser√° de 10%. Caso contr√°rio n√£o ter√° nenhum desconto
 
 SELECT
 	ProductName, 
@@ -87,7 +87,7 @@ SELECT
 	END AS 'Preco com desconto'
 FROM DimProduct
 
---5. Caso o produto seja da marca Litware ou Fabrikam ele receber· um desconto de 5%
+--5. Caso o produto seja da marca Litware ou Fabrikam ele receber√° um desconto de 5%
 SELECT
 	ProductName, 
 	BrandName, 
