@@ -1,13 +1,13 @@
 -- Exercicio 1
 SELECT TOP(100) * FROM FactSales
--- a. FaÁa um resumo da quantidade vendida (SalesQuantity) de acordo com o canal de vendas (channelkey). 
+-- a. Fa√ßa um resumo da quantidade vendida (SalesQuantity) de acordo com o canal de vendas (channelkey). 
 SELECT
 	channelkey AS 'Canal de Venda',
 	SUM(SalesQuantity) AS 'Total Vendido'
 FROM FactSales
 GROUP BY channelkey
 
--- b. FaÁa um agrupamento mostrando a quantidade total vendida (SalesQuantity) e quantidade total devolvida (Return Quantity) de acordo com o ID das lojas (StoreKey).
+-- b. Fa√ßa um agrupamento mostrando a quantidade total vendida (SalesQuantity) e quantidade total devolvida (Return Quantity) de acordo com o ID das lojas (StoreKey).
 SELECT
 	StoreKey AS 'ID Loja',
 	SUM(SalesQuantity) AS 'Total Vendido',
@@ -15,7 +15,7 @@ SELECT
 FROM FactSales
 GROUP BY StoreKey
 
--- c. FaÁa um resumo do valor total vendido (SalesAmount) para cada canal de venda, mas apenas para o ano de 2007
+-- c. Fa√ßa um resumo do valor total vendido (SalesAmount) para cada canal de venda, mas apenas para o ano de 2007
 SELECT
 	channelKey AS 'Canal de Venda',
 	SUM(SalesAmount) AS 'Faturamento Total'
@@ -26,8 +26,8 @@ GROUP BY channelKey
 
 -- Exercicio 2
 SELECT TOP(100) * FROM FactSales
---VocÍ precisa fazer uma an·lise de vendas por produtos. O objetivo final È descobrir o valor total vendido (SalesAmount) por produto (ProductKey). 
---a. A tabela final dever· estar ordenada de acordo com a quantidade vendida e, alÈm disso, mostrar apenas os produtos que tiveram um resultado final de vendas maior do que $5.000.000. 
+--Voc√™ precisa fazer uma an√°lise de vendas por produtos. O objetivo final √© descobrir o valor total vendido (SalesAmount) por produto (ProductKey). 
+--a. A tabela final dever√° estar ordenada de acordo com a quantidade vendida e, al√©m disso, mostrar apenas os produtos que tiveram um resultado final de vendas maior do que $5.000.000. 
 SELECT
 	ProductKey AS 'ID do Produto',
 	SUM(SalesAmount) AS 'Faturamento Total'
@@ -36,7 +36,7 @@ GROUP BY ProductKey
 HAVING SUM(SalesAmount) > 5000000
 ORDER BY SUM(SalesAmount) DESC -- order by deve vir APOS o having
 
---b. FaÁa uma adaptaÁ„o no exercÌcio anterior e mostre os Top 10 produtos com mais vendas. Desconsidere o filtro de $5.000.000 aplicado
+--b. Fa√ßa uma adapta√ß√£o no exerc√≠cio anterior e mostre os Top 10 produtos com mais vendas. Desconsidere o filtro de $5.000.000 aplicado
 SELECT TOP(10)
 	ProductKey AS 'ID do Produto',
 	SUM(SalesAmount) AS 'Faturamento Total'
@@ -47,7 +47,7 @@ ORDER BY SUM(SalesAmount) DESC
 
 -- Exercicio 3
 SELECT TOP(100) * FROM FactOnlineSales
---a. VocÍ deve fazer uma consulta ‡ tabela FactOnlineSales e descobrir qual È o ID (CustomerKey) do cliente que mais realizou compras online (de acordo com a coluna SalesQuantity). 
+--a. Voc√™ deve fazer uma consulta √† tabela FactOnlineSales e descobrir qual √© o ID (CustomerKey) do cliente que mais realizou compras online (de acordo com a coluna SalesQuantity). 
 SELECT
 	CustomerKey AS 'ID do Cliente',
 	SUM(SalesQuantity) AS 'Total Comprado'
@@ -56,7 +56,7 @@ GROUP BY CustomerKey
 ORDER BY SUM(SalesQuantity) DESC
 -- ID do cliente: 19037
 
---b. Feito isso, faÁa um agrupamento de total vendido (SalesQuantity) por ID do produto e descubra quais foram os top 3 produtos mais comprados pelo cliente da letra a)
+--b. Feito isso, fa√ßa um agrupamento de total vendido (SalesQuantity) por ID do produto e descubra quais foram os top 3 produtos mais comprados pelo cliente da letra a)
 SELECT TOP (3)
 	ProductKey AS 'ID do Produto',
 	SUM(SalesQuantity) AS 'Total Comprado'
@@ -67,7 +67,7 @@ ORDER BY SUM(SalesQuantity) DESC
 
 -- Exercicio 4
 SELECT * FROM DimProduct
--- a. FaÁa um agrupamento e descubra a quantidade total de produtos por marca. 
+-- a. Fa√ßa um agrupamento e descubra a quantidade total de produtos por marca. 
 SELECT 
 	BrandName AS 'Marca',
 	COUNT(BrandName) AS 'Qnt Produto'
@@ -75,15 +75,15 @@ FROM DimProduct
 GROUP BY BrandName
 ORDER BY COUNT(BrandName) DESC
 
--- b. Determine a mÈdia do preÁo unit·rio (UnitPrice) para cada ClassName.
+-- b. Determine a m√©dia do pre√ßo unit√°rio (UnitPrice) para cada ClassName.
 SELECT 
 	ClassName AS 'ClasseProduto',
-	AVG(UnitPrice) AS 'MÈdiaPreÁo'
+	AVG(UnitPrice) AS 'M√©diaPre√ßo'
 FROM DimProduct
 GROUP BY ClassName
 ORDER BY AVG(UnitPrice) DESC
 
--- c. FaÁa um agrupamento de cores e descubra o peso total que cada cor de produto possui
+-- c. Fa√ßa um agrupamento de cores e descubra o peso total que cada cor de produto possui
 SELECT 
 	ColorName AS 'Cor',
 	SUM(Weight) AS 'Peso Total'
@@ -93,7 +93,7 @@ ORDER BY SUM(Weight) DESC
 
 --Exercicio 5
 SELECT * FROM DimProduct
--- VocÍ dever· descobrir o peso total para cada tipo de produto (StockTypeName). A tabela final deve considerar apenas a marca ëContosoí e ter os seus valores classificados em ordem decrescente
+-- Voc√™ dever√° descobrir o peso total para cada tipo de produto (StockTypeName). A tabela final deve considerar apenas a marca ‚ÄòContoso‚Äô e ter os seus valores classificados em ordem decrescente
 SELECT 
 	StockTypeName AS 'Tipo de Produto',
 	SUM(Weight) AS 'Peso Total'
@@ -104,7 +104,7 @@ ORDER BY SUM(Weight) DESC
 
 -- Exercicio 6
 SELECT * FROM DimProduct
--- VocÍ seria capaz de confirmar se todas as marcas dos produtos possuem ‡ disposiÁ„o todas as 16 opÁıes de cores?
+-- Voc√™ seria capaz de confirmar se todas as marcas dos produtos possuem √† disposi√ß√£o todas as 16 op√ß√µes de cores?
 SELECT 
 	BrandName AS 'Marca', 
 	COUNT(DISTINCT ColorName) AS 'Qnt Cor'
@@ -120,12 +120,12 @@ WHERE BrandName = 'Proseware' -- checando lista de cores que essa marca tem
 
 -- Exercicio 7
 SELECT * FROM DimCustomer
--- FaÁa um agrupamento para saber o total de clientes de acordo com o Sexo e tambÈm a mÈdia salarial de acordo com o Sexo. Corrija qualquer resultado ìinesperadoî com os seus conhecimentos em SQL.
---OBS: o resultado inesperado È que aparece NULL como sexo pq tem clientes que sao empresas e nao pessoas
+-- Fa√ßa um agrupamento para saber o total de clientes de acordo com o Sexo e tamb√©m a m√©dia salarial de acordo com o Sexo. Corrija qualquer resultado ‚Äúinesperado‚Äù com os seus conhecimentos em SQL.
+--OBS: o resultado inesperado √© que aparece NULL como sexo pq tem clientes que sao empresas e nao pessoas
 SELECT
 	Gender AS 'Sexo',
 	COUNT(Gender) AS 'Qnt Total Clientes',
-	AVG(YearlyIncome) AS 'MÈdia Sal·rio'
+	AVG(YearlyIncome) AS 'M√©dia Sal√°rio'
 FROM DimCustomer
 WHERE Gender IS NOT NULL
 GROUP BY Gender
@@ -133,18 +133,18 @@ GROUP BY Gender
 
 -- Exercicio 8
 SELECT * FROM DimCustomer
--- FaÁa um agrupamento para descobrir a quantidade total de clientes e a mÈdia salarial de acordo com o seu nÌvel escolar. Utilize a coluna Education da tabela DimCustomer para fazer esse agrupamento.
+-- Fa√ßa um agrupamento para descobrir a quantidade total de clientes e a m√©dia salarial de acordo com o seu n√≠vel escolar. Utilize a coluna Education da tabela DimCustomer para fazer esse agrupamento.
 SELECT
 	Education AS 'Escolaridade',
 	COUNT(Education) AS 'Qnt Total',
-	AVG(YearlyIncome) AS 'MÈdia Sal·rio'
+	AVG(YearlyIncome) AS 'M√©dia Sal√°rio'
 FROM DimCustomer
 WHERE Education IS NOT NULL 
 GROUP BY Education
 
 -- Exercicio 9
 SELECT * FROM DimEmployee
---FaÁa uma tabela resumo mostrando a quantidade total de funcion·rios de acordo com o Departamento (DepartmentName). Importante: VocÍ dever· considerar apenas os funcion·rios ativos
+--Fa√ßa uma tabela resumo mostrando a quantidade total de funcion√°rios de acordo com o Departamento (DepartmentName). Importante: Voc√™ dever√° considerar apenas os funcion√°rios ativos
 SELECT
 	DepartmentName AS 'Departamento',
 	COUNT(DepartmentName) AS 'Qnt total por Departamento'
@@ -155,7 +155,7 @@ ORDER BY COUNT(DepartmentName) DESC
 
 -- Exercicio 10
 SELECT * FROM DimEmployee
--- FaÁa uma tabela resumo mostrando o total de VacationHours para cada cargo (Title). VocÍ deve considerar apenas as mulheres, dos departamentos de Production, Marketing, Engineering e Finance, para os funcion·rios contratados entre os anos de 1999 e 2000.
+-- Fa√ßa uma tabela resumo mostrando o total de VacationHours para cada cargo (Title). Voc√™ deve considerar apenas as mulheres, dos departamentos de Production, Marketing, Engineering e Finance, para os funcion√°rios contratados entre os anos de 1999 e 2000.
 SELECT
 	Title AS 'Cargo',
 	SUM(VacationHours) AS 'Hr Totais'
