@@ -11,7 +11,7 @@ INNER JOIN DimDate
 	ON FactSales.DateKey = DimDate.Datekey
 GROUP BY CalendarYear
 
--- Considere apenas o mês (CalendarMonthLabel) de 'January'
+-- Considere apenas o mÃªs (CalendarMonthLabel) de 'January'
 SELECT
 	SUM(SalesQuantity) 'Total Vendido', 
 	DimDate.CalendarYear AS 'Ano'
@@ -33,7 +33,7 @@ GROUP BY CalendarYear
 HAVING SUM(SalesQuantity)  >= 1200000
 
 
--- 1a. Faça um resumo da quantidade vendida (Sales Quantity) de acordo com o nome do canal de vendas (ChannelName). Você deve ordenar a tabela final de acordo com SalesQuantity, em ordem decrescente. 
+-- 1a. FaÃ§a um resumo da quantidade vendida (Sales Quantity) de acordo com o nome do canal de vendas (ChannelName). VocÃª deve ordenar a tabela final de acordo com SalesQuantity, em ordem decrescente. 
 SELECT TOP(3) * FROM DimChannel
 SELECT TOP(3) * FROM FactSales
 
@@ -46,7 +46,7 @@ INNER JOIN DimChannel
 GROUP BY ChannelName
 ORDER BY SUM(SalesQuantity) DESC
 
--- b. Faça um agrupamento mostrando a quantidade total vendida (Sales Quantity) e quantidade total devolvida (Return Quantity) de acordo com o nome das lojas (StoreName).
+-- b. FaÃ§a um agrupamento mostrando a quantidade total vendida (Sales Quantity) e quantidade total devolvida (Return Quantity) de acordo com o nome das lojas (StoreName).
 SELECT TOP(3) * FROM DimStore
 SELECT TOP(3) * FROM FactSales
 
@@ -61,12 +61,12 @@ GROUP BY StoreName
 ORDER BY StoreName
 
 
--- c. Faça um resumo do valor total vendido (Sales Amount) para cada mês (CalendarMonthLabel) e ano (CalendarYear). 
+-- c. FaÃ§a um resumo do valor total vendido (Sales Amount) para cada mÃªs (CalendarMonthLabel) e ano (CalendarYear). 
 SELECT TOP(3) * FROM DimDate
 
 SELECT
 	DimDate.CalendarYear AS 'Ano',
-	DimDate.CalendarMonthLabel AS 'Mês',
+	DimDate.CalendarMonthLabel AS 'MÃªs',
 	SUM(SalesAmount) AS 'Faturamento Total'
 FROM FactSales
 INNER JOIN DimDate
@@ -75,7 +75,7 @@ GROUP BY CalendarYear, CalendarMonthLabel, CalendarMonth
 ORDER BY CalendarMonth ASC
 
 
--- 2 Você precisa fazer uma análise de vendas por produtos. O objetivo final é descobrir o valor total vendido (SalesAmount) por produto. 
+-- 2 VocÃª precisa fazer uma anÃ¡lise de vendas por produtos. O objetivo final Ã© descobrir o valor total vendido (SalesAmount) por produto. 
 SELECT TOP(3) * FROM FactSales
 SELECT TOP(3) * FROM DimProduct
 
@@ -87,7 +87,7 @@ INNER JOIN DimProduct
 	ON FactSales.ProductKey = DimProduct.ProductKey
 GROUP BY ProductName
 
--- a. Descubra qual é a cor de produto que mais é vendida (de acordo com SalesQuantity). 
+-- a. Descubra qual Ã© a cor de produto que mais Ã© vendida (de acordo com SalesQuantity). 
 SELECT
 	SUM(SalesQuantity) AS 'Qnt. Vendido',
 	DimProduct.ColorName AS 'Cor'
@@ -110,7 +110,7 @@ ORDER BY SUM(SalesQuantity) DESC
 
 
 
--- 3. Crie um agrupamento de quantidade vendida (SalesQuantity) por categoria do produto (ProductCategoryName). Obs: Você precisará fazer mais de 1 INNER JOIN, dado que a relação entre FactSales e DimProductCategory não é direta. 
+-- 3. Crie um agrupamento de quantidade vendida (SalesQuantity) por categoria do produto (ProductCategoryName). Obs: VocÃª precisarÃ¡ fazer mais de 1 INNER JOIN, dado que a relaÃ§Ã£o entre FactSales e DimProductCategory nÃ£o Ã© direta. 
 SELECT TOP(3) * FROM FactSales
 SELECT TOP(3) * FROM DimProduct
 SELECT TOP(3) * FROM DimProductSubcategory
@@ -130,7 +130,7 @@ GROUP BY ProductCategoryName
 ORDER BY SUM(SalesQuantity) DESC
 
 
--- 4a. Você deve fazer uma consulta à tabela FactOnlineSales e descobrir qual é o nome completo do cliente que mais realizou compras online (de acordo com a coluna SalesQuantity). 
+-- 4a. VocÃª deve fazer uma consulta Ã  tabela FactOnlineSales e descobrir qual Ã© o nome completo do cliente que mais realizou compras online (de acordo com a coluna SalesQuantity). 
 SELECT TOP(3) * FROM FactOnlineSales
 SELECT TOP(3) * FROM DimCustomer
 
@@ -146,7 +146,7 @@ WHERE CustomerType = 'Person'
 GROUP BY DimCustomer.CustomerKey, FirstName, LastName
 ORDER BY SUM(SalesQuantity) DESC
 
--- b. Feito isso, faça um agrupamento de produtos e descubra quais foram os top 10 produtos mais comprados pelo cliente da letra a, considerando o nome do produto. 
+-- b. Feito isso, faÃ§a um agrupamento de produtos e descubra quais foram os top 10 produtos mais comprados pelo cliente da letra a, considerando o nome do produto. 
 SELECT
 	ProductName,
 	SUM(SalesQuantity) AS 'Qnt. Vendida'
@@ -158,7 +158,7 @@ GROUP BY ProductName
 ORDER BY SUM(SalesQuantity) DESC
 
 
--- 5. Faça um resumo mostrando o total de produtos comprados (Sales Quantity) de acordo com o sexo dos clientes.
+-- 5. FaÃ§a um resumo mostrando o total de produtos comprados (Sales Quantity) de acordo com o sexo dos clientes.
 SELECT TOP(3) * FROM FactSales
 SELECT TOP(3) * FROM FactOnlineSales
 SELECT TOP(3) * FROM DimCustomer
@@ -173,13 +173,13 @@ WHERE Gender IS NOT NULL
 GROUP BY Gender
 
 
--- 6. Faça uma tabela resumo mostrando a taxa de câmbio média de acordo com cada CurrencyDescription. A tabela final deve conter apenas taxas entre 10 e 100. 
+-- 6. FaÃ§a uma tabela resumo mostrando a taxa de cÃ¢mbio mÃ©dia de acordo com cada CurrencyDescription. A tabela final deve conter apenas taxas entre 10 e 100. 
 SELECT TOP(3) * FROM DimCurrency
 SELECT TOP(3) * FROM FactExchangeRate
 
 SELECT
 	DimCurrency.CurrencyDescription,
-	AVG(AverageRate) AS 'Taxa Média'
+	AVG(AverageRate) AS 'Taxa MÃ©dia'
 FROM FactExchangeRate
 INNER JOIN DimCurrency
 	ON FactExchangeRate.CurrencyKey = DimCurrency.CurrencyKey
@@ -187,12 +187,12 @@ GROUP BY CurrencyDescription
 HAVING AVG(AverageRate) BETWEEN 10 AND 100
 
 
--- 7. Descubra o valor total na tabela FactStrategyPlan destinado aos cenários: Actual e Budget. 
+-- 7. Descubra o valor total na tabela FactStrategyPlan destinado aos cenÃ¡rios: Actual e Budget. 
 SELECT TOP(5) * FROM FactStrategyPlan
 SELECT TOP(5) * FROM DimScenario
 
 SELECT
-	ScenarioName AS 'Cenário',
+	ScenarioName AS 'CenÃ¡rio',
 	SUM(Amount)	AS 'Total'
 FROM FactStrategyPlan
 INNER JOIN DimScenario
@@ -201,7 +201,7 @@ GROUP BY ScenarioName
 HAVING ScenarioName IN ('Actual', 'Budget')
 
 
--- 8. Faça uma tabela resumo mostrando o resultado do planejamento estratégico (FactStrategyPlan) por ano.
+-- 8. FaÃ§a uma tabela resumo mostrando o resultado do planejamento estratÃ©gico (FactStrategyPlan) por ano.
 SELECT TOP(5) * FROM FactStrategyPlan
 SELECT TOP(5) * FROM DimDate
 
@@ -213,7 +213,7 @@ INNER JOIN DimDate
 	ON FactStrategyPlan.Datekey = DimDate.Datekey
 GROUP BY CalendarYear
 
--- 9. Faça um agrupamento de quantidade de produtos por ProductSubcategoryName. Leve em consideração em sua análise apenas a marca Contoso e a cor Silver. 
+-- 9. FaÃ§a um agrupamento de quantidade de produtos por ProductSubcategoryName. Leve em consideraÃ§Ã£o em sua anÃ¡lise apenas a marca Contoso e a cor Silver. 
 SELECT TOP(3) * FROM DimProduct
 SELECT TOP(3) * FROM DimProductSubcategory
 
@@ -226,7 +226,7 @@ INNER JOIN DimProductSubcategory
 WHERE BrandName = 'Contoso' AND ColorName = 'Silver'
 GROUP BY ProductSubcategoryName
 
--- 10. Faça um agrupamento duplo de quantidade de produtos por BrandName e ProductSubcategoryName. A tabela final deverá ser ordenada de acordo com a coluna BrandName
+-- 10. FaÃ§a um agrupamento duplo de quantidade de produtos por BrandName e ProductSubcategoryName. A tabela final deverÃ¡ ser ordenada de acordo com a coluna BrandName
 
 SELECT
 	BrandName AS 'Marca',
