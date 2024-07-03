@@ -1,26 +1,26 @@
 -- JOIN
 
 /*
-Chave Prim·ria È a coluna que identifica as info distintas em uma tabela, geralmente coluna de ID
-Chave Estrangeira È uma coluna que permite relacionar as linhas de uma segunda tabela com a Chave Prim·ria de uma primeira tabela
+Chave Prim√°ria √© a coluna que identifica as info distintas em uma tabela, geralmente coluna de ID
+Chave Estrangeira √© uma coluna que permite relacionar as linhas de uma segunda tabela com a Chave Prim√°ria de uma primeira tabela
 
-Tabela Dimens„o: tabela com caracterÌsticas de um determinado elemento: lojas, produtos, funcion·rios, clientes, etc. Elementos n„o se repetem. … onde tem as chaves prim·rias
-Tabela Fato:tabela que vai registrar os fatos/acontecimentos de uma empresa/negÛcio em determinados perÌodos de tempo (vendas, devoluÁıes, aberturas de chamados, receitas, despesas). Tabela c milharse de info e composta essencialmente por colunas de ID usadas p buscar info complementares. 
+Tabela Dimens√£o: tabela com caracter√≠sticas de um determinado elemento: lojas, produtos, funcion√°rios, clientes, etc. Elementos n√£o se repetem. √â onde tem as chaves prim√°rias
+Tabela Fato:tabela que vai registrar os fatos/acontecimentos de uma empresa/neg√≥cio em determinados per√≠odos de tempo (vendas, devolu√ß√µes, aberturas de chamados, receitas, despesas). Tabela c milharse de info e composta essencialmente por colunas de ID usadas p buscar info complementares. 
 */
 
 -- Teoria
 SELECT
-	Tabela1.Coluna1, -- nao necessariamente precisa informar sempre a tabela antes, mas È necess·rio em caso de colunas com mesmo nome em tabelas diferentes
+	Tabela1.Coluna1, -- nao necessariamente precisa informar sempre a tabela antes, mas √© necess√°rio em caso de colunas com mesmo nome em tabelas diferentes
 	Tabela1.Coluna2,
 	Tabela1.Coluna3,
 	Tabela2.Coluna1
 FROM
 	Tabela1
-LEFT JOIN Tabela2  -- VariaÁıes: RIGHT JOIN, INNER JOIN, FULL JOIN
+LEFT JOIN Tabela2  -- Varia√ß√µes: RIGHT JOIN, INNER JOIN, FULL JOIN
 	ON Tabela1.Coluna3 = Tabela2.Coluna
 
 
--- Se queremos fazer um LEFT (ANTI) JOIN - e variaÁoes - onde queremos uma tabela sem as infos de outras tabelas, temos que colocar o WHERE e filtrar por valores q n„o estariam na outra tabela, ou seja, valores NULL
+-- Se queremos fazer um LEFT (ANTI) JOIN - e varia√ßoes - onde queremos uma tabela sem as infos de outras tabelas, temos que colocar o WHERE e filtrar por valores q n√£o estariam na outra tabela, ou seja, valores NULL
 SELECT
 	Tabela1.Coluna1,
 	Tabela1.Coluna2,
