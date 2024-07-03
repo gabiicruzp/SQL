@@ -43,7 +43,7 @@ WHERE BrandName = 'Contoso'
 GROUP BY ColorName
 
 
--- HAVING permite filtrar APÓS o agrupamento
+-- HAVING permite filtrar APÃ“S o agrupamento
 SELECT
 	BrandName AS 'Marca', 
 	COUNT(Brandname) AS 'Total por Marca'
@@ -59,7 +59,7 @@ SELECT
 FROM DimProduct
 WHERE ClassName = 'Economy' -- Filtra a tabela original, antes do agrupamento
 GROUP BY BrandName
-HAVING COUNT(BrandName) >=200 -- Filrta a tabela após o agrupamento
+HAVING COUNT(BrandName) >=200 -- Filrta a tabela apÃ³s o agrupamento
 
 
 
