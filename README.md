@@ -1,6 +1,7 @@
 # SQL Learning Repository
 
-Welcome to the SQL Learning Repository! This repository contains SQL scripts that I am creating and collecting as I learn more about different database management systems (DBMSs) through the Hashtag Treinamentos course.
+Welcome to the SQL Learning Repository! 
+This repository contains SQL scripts that I am creating and collecting as I learn more about different database management systems (DBMSs) through the Hashtag Treinamentos course.
 
 ## Repository Structure
 
